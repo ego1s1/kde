@@ -10,6 +10,7 @@ Usage: python3 tools/generate-aurorae.py [--install]
 Reads reference/whitesur-aurorae/{close,minimize,maximize,decoration}.svg,
 writes aurorae/themes/RosePine{,Moon,Dawn}/
 """
+import re
 import sys
 from pathlib import Path
 
@@ -177,6 +178,10 @@ def main(install=False):
         deco = (REF / "decoration.svg").read_text()
         for a, b in pal["frame_map"].items():
             deco = deco.replace(a, b)
+        # bottom lip: solid band must be fully opaque (no see-through)
+        deco = re.sub(
+            r'(d="M 470,27\d[^"]*"\s+fill="#[0-9a-fA-F]{6}"\s+opacity=")0\.75(")',
+            r"\g<1>1\g<2>", deco)
         (d / "decoration.svg").write_text(deco)
         # Plasma 6 KWin/Aurorae package check requires svgz; ship both
         import gzip

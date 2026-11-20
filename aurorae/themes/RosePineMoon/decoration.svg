@@ -294,7 +294,7 @@
     <path
        d="M 470,277 H 325 v 12 h 145 z"
        fill="#232136"
-       opacity="0.75"
+       opacity="1"
        id="path66" />
   </g>
   <path
@@ -364,7 +364,7 @@
     <path
        d="M 470,276.92 H 325 v 12 h 145 z"
        fill="#232136"
-       opacity="0.75"
+       opacity="1"
        id="path90" />
   </g>
   <path

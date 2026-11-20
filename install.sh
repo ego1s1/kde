@@ -33,9 +33,27 @@ install_variant() {
   echo "look-and-feel: $lfid"
 }
 
+apply_variant() {
+  local v="$1" lfid aurorae
+  case "$v" in
+    main) lfid=com.rosepine.main; aurorae=RosePine ;;
+    moon) lfid=com.rosepine.moon; aurorae=RosePineMoon ;;
+    dawn) lfid=com.rosepine.dawn; aurorae=RosePineDawn ;;
+  esac
+  lookandfeeltool -a "$lfid"
+  # lookandfeeltool strips the __aurorae__svg__ prefix KWin needs:
+  # force v2 engine + prefixed theme so the correct variant applies.
+  kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key library org.kde.kwin.aurorae.v2
+  kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key theme "__aurorae__svg__$aurorae"
+  qdbus6 org.kde.KWin /KWin reconfigure 2>/dev/null || true
+  echo "applied: $lfid + aurorae $aurorae"
+}
+
 if [ "$VAR" = all ]; then
   for v in main moon dawn; do install_variant "$v"; done
+  apply_variant moon
 else
   install_variant "$VAR"
+  apply_variant "$VAR"
 fi
-echo "Apply with: lookandfeeltool -a com.rosepine.<main|moon|dawn>"
+echo "Verify with: lookandfeeltool -l | grep rose; kreadconfig6 --file kwinrc --group org.kde.kdecoration2 --key theme"
