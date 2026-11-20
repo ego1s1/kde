@@ -124,7 +124,7 @@ ButtonMarginLeft=0
 ButtonMarginRight=0
 ExplicitButtonSpacer=0
 PaddingTop=21
-PaddingBottom=79
+PaddingBottom=0
 PaddingRight=41
 PaddingLeft=41
 TitleEdgeTopMaximized=8
@@ -178,10 +178,23 @@ def main(install=False):
         deco = (REF / "decoration.svg").read_text()
         for a, b in pal["frame_map"].items():
             deco = deco.replace(a, b)
-        # bottom lip: solid band must be fully opaque (no see-through)
+        # bottom lip: strip the 12px band to a solid opaque base (no halo seam)
         deco = re.sub(
             r'(d="M 470,27\d[^"]*"\s+fill="#[0-9a-fA-F]{6}"\s+opacity=")0\.75(")',
             r"\g<1>1\g<2>", deco)
+        # no bottom lip extension: empty the bottom row + masks, zero bottom hints
+        for gid in ["decoration-bottom", "decoration-bottomleft",
+                    "decoration-bottomright",
+                    "decoration-inactive-bottom",
+                    "decoration-inactive-bottomleft",
+                    "decoration-inactive-bottomright",
+                    "mask-bottom", "mask-bottomleft", "mask-bottomright"]:
+            deco = re.sub(r'(<g\s+id="%s".*?>).*?(</g>)' % gid,
+                          r"\g<1>\g<2>", deco, flags=re.S)
+        deco = re.sub(r'(<rect\s+id="shadow-hint-bottom-margin"[^>]*?height=")\d+(")',
+                      r"\g<1>0\g<2>", deco)
+        deco = re.sub(r'(<rect\s+id="hint-bottom-margin"[^>]*?height=")\d+(")',
+                      r"\g<1>0\g<2>", deco)
         (d / "decoration.svg").write_text(deco)
         # Plasma 6 KWin/Aurorae package check requires svgz; ship both
         import gzip
