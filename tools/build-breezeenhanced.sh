@@ -47,4 +47,4 @@ cmake --build "$BUILD/build" -j"$(nproc)" || exit 1
 cmake --install "$BUILD/build" || exit 1
 
 echo "installed. verify with: kwin-applywindowdecoration --list-themes | grep -i -E 'rose|enhanced|breeze'"
-echo "apply with: kwin-applywindowdecoration org.kde.breezeenhanced"
+echo "apply with: kwin-applywindowdecoration BreezeEnhanced"

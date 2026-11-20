@@ -279,7 +279,24 @@
   </g>
   <g
      id="decoration-bottom"
-     transform="translate(-220,-81)"><rect width="1" height="1" fill="none"/></g>
+     transform="translate(-220,-81)">
+    <path
+       d="m 325,289 v 67 h 145 v -67 z"
+       fill="url(#linearGradient5688)"
+       opacity="0.5"
+       id="path62"
+       style="fill:url(#linearGradient5688)" />
+    <path
+       d="M 470,289 H 325 v 1 h 145 z"
+       fill="#000000"
+       opacity="0.75"
+       id="path64" />
+    <path
+       d="M 470,277 H 325 v 12 h 145 z"
+       fill="#faf4ed"
+       opacity="1"
+       id="path66" />
+  </g>
   <path
      id="decoration-center"
      d="m 105,110 v 86 h 145 v -86 z"
@@ -332,7 +349,24 @@
   </g>
   <g
      id="decoration-inactive-bottom"
-     transform="translate(145,-80.922)"><rect width="1" height="1" fill="none"/></g>
+     transform="translate(145,-80.922)">
+    <path
+       d="m 325,288.92 v 67 h 145 v -67 z"
+       fill="url(#linearGradient5688-2)"
+       opacity="0.5"
+       id="path86"
+       style="fill:url(#linearGradient5688-2)" />
+    <path
+       d="M 470,288.92 H 325 v 1 h 145 z"
+       fill="#000000"
+       opacity="0.75"
+       id="path88" />
+    <path
+       d="M 470,276.92 H 325 v 12 h 145 z"
+       fill="#f2e9e1"
+       opacity="1"
+       id="path90" />
+  </g>
   <path
      id="decoration-inactive-center"
      d="m 470,110 v 86 h 145 v -86 z"
@@ -384,11 +418,62 @@
   </g>
   <g
      id="decoration-bottomleft"
-     transform="translate(-390,-94)"><rect width="1" height="1" fill="none"/></g>
+     transform="translate(-390,-94)">
+    <path
+       transform="translate(385,94)"
+       d="m 81,196 c 0,6.648 5.352,12 12,12 h 17 v -12 z"
+       fill="#faf4ed"
+       opacity="0.75"
+       id="path110" />
+    <g
+       transform="matrix(1,0,0,0.99932,165,-10.667)"
+       id="g118">
+      <path
+         transform="matrix(1,0,0,1.0007,220,104.74)"
+         d="m 40,195.9944 v 78.99845 h 70 V 208 H 93 c -6.648,0 -12,-5.3576 -12,-12.0056 z"
+         opacity="0.5"
+         id="path112"
+         style="fill:url(#radialGradient965)" />
+      <g
+         transform="translate(-20,24)"
+         id="g114" />
+      <path
+         transform="matrix(1,0,0,1.0007,220,104.74)"
+         d="m 80,196 c 0,7.202 5.798,13 13,13 h 17 v -1 H 93 c -6.648,0 -12,-5.352 -12,-12 z"
+         fill="#000000"
+         opacity="0.75"
+         id="path116" />
+    </g>
   </g>
   <g
      id="decoration-inactive-bottomleft"
-     transform="translate(0,-90)"><rect width="1" height="1" fill="none"/></g>
+     transform="translate(0,-90)">
+    <path
+       transform="translate(0,90)"
+       d="m 441,196 c 0,6.648 5.352,12 12,12 h 17 v -12 z"
+       fill="#f2e9e1"
+       opacity="0.75"
+       id="path121" />
+    <g
+       transform="matrix(1,0,0,0.99932,140,-14.604)"
+       id="g129">
+      <path
+         d="m 260,300.80855 v 79.05376 h 70 v -67.04536 h -17 c -6.648,0 -12,-5.35575 -12,-12.0084 z"
+         fill="url(#radialGradient967)"
+         opacity="0.5"
+         id="path123"
+         style="fill:url(#radialGradient967);stroke-width:1.00035"
+         sodipodi:nodetypes="ccccscc" />
+      <g
+         transform="translate(-20,24)"
+         id="g125" />
+      <path
+         transform="matrix(1,0,0,1.0007,-140,104.68)"
+         d="m 440,196 c 0,7.202 5.798,13 13,13 h 14 l 3,-1e-5 V 208 h -17 c -6.648,0 -12,-5.352 -12,-12 z"
+         fill="#000000"
+         opacity="0.75"
+         id="path127" />
+    </g>
   </g>
   <rect
      id="shadow-hint-top-margin"
@@ -402,7 +487,7 @@
      x="170"
      y="209"
      width="4"
-     height="0"
+     height="66"
      fill="#ff00ff" />
   <rect
      id="shadow-hint-right-margin"
@@ -431,7 +516,7 @@
      x="182"
      y="196"
      width="4"
-     height="0"
+     height="79"
      fill="#00ff29" />
   <rect
      id="hint-right-margin"
@@ -549,7 +634,15 @@
   </g>
   <g
      id="mask-bottom"
-     transform="translate(539,-80.92)"><rect width="1" height="1" fill="none"/></g>
+     transform="translate(539,-80.92)">
+    <path
+       d="m 325,288.92 v 67 h 145 v -67 z"
+       fill="none"
+       id="path169" />
+    <path
+       d="M 470,276.92 H 325 v 12 h 145 z"
+       id="path171" />
+  </g>
   <g
      id="mask-center"
      transform="translate(-0.24,-90)">
@@ -582,7 +675,16 @@
   </g>
   <g
      id="mask-bottomleft"
-     transform="translate(394,-90)"><rect width="1" height="1" fill="none"/></g>
+     transform="translate(394,-90)">
+    <path
+       transform="translate(0,90)"
+       d="m 441,196 c 0,6.648 5.352,12 12,12 h 17 v -12 z"
+       id="path187" />
+    <path
+       d="m 400,286 v 79 h 70 v -67 h -17 c -6.648,0 -12,-5.352 -12,-12 z"
+       fill="none"
+       id="path189" />
+  </g>
   <use
      id="mask-topright"
      transform="matrix(-1,0,0,1,1873,0)"
