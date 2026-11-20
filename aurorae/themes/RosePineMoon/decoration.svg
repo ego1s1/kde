@@ -279,7 +279,7 @@
   </g>
   <g
      id="decoration-bottom"
-     transform="translate(-220,-81)"></g>
+     transform="translate(-220,-81)"><rect width="1" height="1" fill="none"/></g>
   <path
      id="decoration-center"
      d="m 105,110 v 86 h 145 v -86 z"
@@ -332,7 +332,7 @@
   </g>
   <g
      id="decoration-inactive-bottom"
-     transform="translate(145,-80.922)"></g>
+     transform="translate(145,-80.922)"><rect width="1" height="1" fill="none"/></g>
   <path
      id="decoration-inactive-center"
      d="m 470,110 v 86 h 145 v -86 z"
@@ -384,11 +384,11 @@
   </g>
   <g
      id="decoration-bottomleft"
-     transform="translate(-390,-94)"></g>
+     transform="translate(-390,-94)"><rect width="1" height="1" fill="none"/></g>
   </g>
   <g
      id="decoration-inactive-bottomleft"
-     transform="translate(0,-90)"></g>
+     transform="translate(0,-90)"><rect width="1" height="1" fill="none"/></g>
   </g>
   <rect
      id="shadow-hint-top-margin"
@@ -549,7 +549,7 @@
   </g>
   <g
      id="mask-bottom"
-     transform="translate(539,-80.92)"></g>
+     transform="translate(539,-80.92)"><rect width="1" height="1" fill="none"/></g>
   <g
      id="mask-center"
      transform="translate(-0.24,-90)">
@@ -582,7 +582,7 @@
   </g>
   <g
      id="mask-bottomleft"
-     transform="translate(394,-90)"></g>
+     transform="translate(394,-90)"><rect width="1" height="1" fill="none"/></g>
   <use
      id="mask-topright"
      transform="matrix(-1,0,0,1,1873,0)"

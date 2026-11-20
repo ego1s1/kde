@@ -17,8 +17,8 @@ Image=Next
 cursorTheme=Breeze_Light
 
 [kwinrc][org.kde.kdecoration2]
-library=org.kde.kwin.aurorae.v2
-theme=__aurorae__svg__RosePineDawn
+library=breezeenhanced
+theme=BreezeEnhanced
 
 [ksplashrc][KSplash]
 Theme=com.rosepine.dawn

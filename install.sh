@@ -41,9 +41,15 @@ apply_variant() {
     dawn) lfid=com.rosepine.dawn; aurorae=RosePineDawn ;;
   esac
   lookandfeeltool -a "$lfid"
-  # lookandfeeltool strips the __aurorae__svg__ prefix KWin needs and may
-  # write kwinrc asynchronously: settle, then force v2 engine + prefixed
-  # theme, and verify the values stuck before reconfiguring.
+  # Preferred deco: BreezeEnhanced (C++, Rose Pine buttons).
+  export QT_PLUGIN_PATH="$HOME/.local/lib/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}"
+  if /usr/lib/kwin-applywindowdecoration BreezeEnhanced >/dev/null 2>&1; then
+    echo "applied: $lfid + BreezeEnhanced"
+    return 0
+  fi
+  # Fallback: bundled Aurorae traffic lights. lookandfeeltool strips the
+  # __aurorae__svg__ prefix KWin needs and may write kwinrc asynchronously:
+  # settle, then force v2 engine + prefixed theme, and verify before reconfig.
   sleep 2
   kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key library org.kde.kwin.aurorae.v2
   kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key theme "__aurorae__svg__$aurorae"
@@ -56,13 +62,24 @@ apply_variant() {
     sleep 1
   fi
   qdbus6 org.kde.KWin /KWin reconfigure 2>/dev/null || true
-  echo "applied: $lfid + aurorae $aurorae"
+  echo "applied: $lfid + aurorae $aurorae (fallback)"
+}
+
+install_breezeenhanced() {
+  # C++ deco (BreezeEnhanced, Rose Pine buttons): build once, incremental after.
+  "$REPO/tools/build-breezeenhanced.sh" || return 1
+  mkdir -p ~/.config/plasma-workspace/env
+  cp "$REPO/breeze-enhanced-qt-plugins.sh" ~/.config/plasma-workspace/env/
+  chmod +x ~/.config/plasma-workspace/env/breeze-enhanced-qt-plugins.sh
+  export QT_PLUGIN_PATH="$HOME/.local/lib/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}"
 }
 
 if [ "$VAR" = all ]; then
+  install_breezeenhanced
   for v in main moon dawn; do install_variant "$v"; done
   apply_variant moon
 else
+  install_breezeenhanced
   install_variant "$VAR"
   apply_variant "$VAR"
 fi

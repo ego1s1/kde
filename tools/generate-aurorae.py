@@ -183,6 +183,8 @@ def main(install=False):
             r'(d="M 470,27\d[^"]*"\s+fill="#[0-9a-fA-F]{6}"\s+opacity=")0\.75(")',
             r"\g<1>1\g<2>", deco)
         # no bottom lip extension: empty the bottom row + masks, zero bottom hints
+        # no bottom lip: neutralize the bottom row + masks (1px no-op keeps
+        # FrameSvg geometry valid), zero bottom hints/padding
         for gid in ["decoration-bottom", "decoration-bottomleft",
                     "decoration-bottomright",
                     "decoration-inactive-bottom",
@@ -190,7 +192,8 @@ def main(install=False):
                     "decoration-inactive-bottomright",
                     "mask-bottom", "mask-bottomleft", "mask-bottomright"]:
             deco = re.sub(r'(<g\s+id="%s".*?>).*?(</g>)' % gid,
-                          r"\g<1>\g<2>", deco, flags=re.S)
+                          r'\g<1><rect width="1" height="1" fill="none"/>\g<2>',
+                          deco, flags=re.S)
         deco = re.sub(r'(<rect\s+id="shadow-hint-bottom-margin"[^>]*?height=")\d+(")',
                       r"\g<1>0\g<2>", deco)
         deco = re.sub(r'(<rect\s+id="hint-bottom-margin"[^>]*?height=")\d+(")',
