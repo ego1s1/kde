@@ -4,7 +4,7 @@
 # Colors: tools/recolor-breezeenhanced.py (Rose Pine love/gold/pine/foam).
 set -u
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
-REF="$REPO/reference/BreezeEnhanced"
+SRC="$REPO/kwin/decoration/rose-pine"
 BUILD="$REPO/.build/breeze-rosepine"
 PREFIX="$HOME/.local"
 
@@ -14,23 +14,28 @@ for t in cmake g++ make; do
     exit 1
   }
 done
-[ -d "$REF" ] || { echo "MISSING: $REF (reference clone)"; exit 1; }
-
+[ -d "$SRC" ] || { echo "MISSING: $SRC (vendored fork)"; exit 1; }
+# Guard: the vendored fork must already carry the Rose Pine recolor.
+# To refresh from upstream: copy reference/BreezeEnhanced over the fork
+# (keep .git out), then run: python3 tools/recolor-breezeenhanced.py <fork>
+# and re-apply the KPlugin Id/Name fix below.
+if grep -rq "QColor(255, 92, 87)\|QColor(40, 211, 63)\|QColor(243, 176, 43)" "$SRC/breezebutton.cpp"; then
+  echo "UPSTREAM COLORS PRESENT in $SRC/breezebutton.cpp -- re-run recolor-breezeenhanced.py on the fork first"
+  exit 1
+fi
 rm -rf "$BUILD"
 mkdir -p "$BUILD"
-cp -r "$REF/." "$BUILD/"
-python3 "$REPO/tools/recolor-breezeenhanced.py" "$BUILD" || exit 1
-# KPluginFactory (KF6): embedded KPlugin Id must match the .so filename.
-# breezeenhanced.json carries "Id": "org.kde.breezeenhanced" but the module
-# installs as breezeenhanced.so -> factory refuses to create the instance.
-# Sanctioned fix per the error message: drop the Id field (upstream bug).
+cp -r "$SRC/." "$BUILD/"
 python3 - "$BUILD/breezeenhanced.json" <<'EOF'
 import json, sys
 p = sys.argv[1]
 md = json.load(open(p))
+# KF6 requires embedded Id to match the .so filename (or be absent).
 md["KPlugin"].pop("Id", None)
-json.dump(md, open(p, "w"), indent=4)
-print("stripped embedded KPlugin.Id")
+md["KPlugin"]["Name"] = "Rose Pine Enhanced"
+md["KPlugin"]["Description"] = "Breeze-style window decoration with Rosé Pine traffic-light buttons"
+json.dump(md, open(p, "w"), indent=4, ensure_ascii=False)
+print("metadata: Id dropped, Name set")
 EOF
 
 cmake -S "$BUILD" -B "$BUILD/build" \

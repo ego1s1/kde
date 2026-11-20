@@ -1,0 +1,15 @@
+{
+    "KPlugin": {
+        "Description": "Breeze-style window decoration with Rosé Pine traffic-light buttons",
+        "EnabledByDefault": true,
+        "Name": "Rose Pine Enhanced",
+        "ServiceTypes": [
+            "org.kde.kdecoration2"
+        ]
+    },
+    "X-KDE-ConfigModule": "kcm_breezeenhanced",
+    "org.kde.kdecoration2": {
+        "blur": true,
+        "recommendedBorderSize": "None"
+    }
+}
