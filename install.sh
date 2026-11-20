@@ -41,10 +41,20 @@ apply_variant() {
     dawn) lfid=com.rosepine.dawn; aurorae=RosePineDawn ;;
   esac
   lookandfeeltool -a "$lfid"
-  # lookandfeeltool strips the __aurorae__svg__ prefix KWin needs:
-  # force v2 engine + prefixed theme so the correct variant applies.
+  # lookandfeeltool strips the __aurorae__svg__ prefix KWin needs and may
+  # write kwinrc asynchronously: settle, then force v2 engine + prefixed
+  # theme, and verify the values stuck before reconfiguring.
+  sleep 2
   kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key library org.kde.kwin.aurorae.v2
   kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key theme "__aurorae__svg__$aurorae"
+  sleep 1
+  cur="$(kreadconfig6 --file kwinrc --group org.kde.kdecoration2 --key theme)"
+  if [ "$cur" != "__aurorae__svg__$aurorae" ]; then
+    sleep 3
+    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key library org.kde.kwin.aurorae.v2
+    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key theme "__aurorae__svg__$aurorae"
+    sleep 1
+  fi
   qdbus6 org.kde.KWin /KWin reconfigure 2>/dev/null || true
   echo "applied: $lfid + aurorae $aurorae"
 }
