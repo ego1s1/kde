@@ -1,0 +1,14 @@
+{
+    "KPackageStructure": "KWin/Aurorae",
+    "KPlugin": {
+        "Authors": [{"Email": "", "Name": "Rosé Pine"}],
+        "Category": "Plasma 6 Window Decorations",
+        "ServiceTypes": ["aurorae"],
+        "EnabledByDefault": true,
+        "Name": "Rose Pine",
+        "Description": "Rosé Pine traffic lights (love/gold/pine) for KWin Aurorae",
+        "Id": "RosePine",
+        "License": "MIT",
+        "Version": "1.0"
+    }
+}

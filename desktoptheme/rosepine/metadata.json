@@ -1,0 +1,19 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "rose-pine",
+        "Name": "Ros\u00e9 Pine"
+      }
+    ],
+    "Category": "",
+    "Description": "Ros\u00e9 Pine Plasma style (Breeze shapes, Ros\u00e9 Pine colors)",
+    "EnabledByDefault": true,
+    "Id": "rosepine",
+    "License": "MIT",
+    "Name": "Ros\u00e9 Pine",
+    "Version": "1.0",
+    "Website": "https://github.com/rose-pine/kde"
+  },
+  "X-Plasma-API": "5.0"
+}

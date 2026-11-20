@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "upstream": "https://rosepinetheme.com/palette/",
+    "note": "Dawn text stays #575279 per shipped ports (upstream palette.json lists #464261 as pending change)"
+  },
+  "variants": {
+    "main": {
+      "display": "Rosé Pine",
+      "slug": "RosePine",
+      "style_id": "rosepine",
+      "lookfeel_id": "com.rosepine.main",
+      "roles": {
+        "base": [25, 23, 36],
+        "surface": [31, 29, 46],
+        "overlay": [38, 35, 58],
+        "muted": [110, 106, 134],
+        "subtle": [144, 140, 170],
+        "text": [224, 222, 244],
+        "love": [235, 111, 146],
+        "gold": [246, 193, 119],
+        "rose": [235, 188, 186],
+        "pine": [49, 116, 143],
+        "foam": [156, 207, 216],
+        "iris": [196, 167, 231],
+        "highlightLow": [33, 32, 46],
+        "highlightMed": [64, 61, 82],
+        "highlightHigh": [82, 79, 103]
+      }
+    },
+    "moon": {
+      "display": "Rosé Pine Moon",
+      "slug": "RosePineMoon",
+      "style_id": "rosepine-moon",
+      "lookfeel_id": "com.rosepine.moon",
+      "roles": {
+        "base": [35, 33, 54],
+        "surface": [42, 39, 63],
+        "overlay": [57, 53, 82],
+        "muted": [110, 106, 134],
+        "subtle": [144, 140, 170],
+        "text": [224, 222, 244],
+        "love": [235, 111, 146],
+        "gold": [246, 193, 119],
+        "rose": [234, 154, 151],
+        "pine": [62, 143, 176],
+        "foam": [156, 207, 216],
+        "iris": [196, 167, 231],
+        "highlightLow": [42, 40, 62],
+        "highlightMed": [68, 65, 90],
+        "highlightHigh": [86, 83, 120]
+      }
+    },
+    "dawn": {
+      "display": "Rosé Pine Dawn",
+      "slug": "RosePineDawn",
+      "style_id": "rosepine-dawn",
+      "lookfeel_id": "com.rosepine.dawn",
+      "roles": {
+        "base": [250, 244, 237],
+        "surface": [255, 250, 243],
+        "overlay": [242, 233, 225],
+        "muted": [152, 147, 165],
+        "subtle": [121, 117, 147],
+        "text": [87, 82, 121],
+        "love": [180, 99, 122],
+        "gold": [234, 157, 52],
+        "rose": [215, 130, 126],
+        "pine": [40, 105, 131],
+        "foam": [86, 148, 159],
+        "iris": [144, 122, 169],
+        "highlightLow": [244, 237, 232],
+        "highlightMed": [223, 218, 217],
+        "highlightHigh": [206, 202, 205]
+      }
+    }
+  }
+}

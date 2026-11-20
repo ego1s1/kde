@@ -12,24 +12,30 @@
 </p>
 
 ## Note
-This is a WIP theme, as of now containing basic Plasma theming and a full adaptation of the Rosé Pine Moon color palette.
+Global themes for all three variants (Main/Moon/Dawn): Breeze behavior + Rosé Pine colors, Aurorae macOS traffic-light window decorations (love/gold/pine).
 
 ## Todo
-- [ ] Other variants of the original theme
-- [ ] Window decorators
-- [ ] Widgets (I'll need some help with this one)
+- [x] All three variants (Main `#191724`, Moon `#232136`, Dawn `#faf4ed`)
+- [x] Window decorators (Aurorae traffic lights, Breeze-compatible)
+- [x] Single-source palette (`palette.json` + `tools/generate.py`, no `$var` leaks)
+- [x] Desktoptheme per variant (minimal 3-file, Breeze SVG fallback)
+- [x] A global theme to streamline installation (`look-and-feel/com.rosepine.*`)
+- [ ] Real screenshot previews (currently Breeze placeholders in `look-and-feel/*/contents/previews/`)
 - [ ] Releases
-- [ ] A global theme to streamline installation
-- [ ] KDE Store release once all above is done!
+- [ ] KDE Store release once screenshots are in!
 
-## Usage
+## Usage (one click)
 
-1. Go to System Settings > Appearance > Plasma Style and select `Install from File...`
-2. From the cloned directory, select the subdirectory of the variant you like most
-3. Select the `tar.gz` file of the chosen variant
-4. Move the `RosePine[Variant].colors` file from the `colorschemes` subdirectory into your ``color-schemes`` directory (by default, it should be at `~/.local/share/color-schemes`. If it doesn't exist, create it)
-5. Select the color scheme from System Settings > Appearance > Colours
-6. **[OPTIONAL]** Download `AllRosePineThemesIcons.tar.gz` from [rose-pine/gtk](https://github.com/rose-pine/gtk/releases/tag/v2.0.0), decompress it and copy the folder respective to your chosen variant into `~/.local/share/icons`, then apply the icon pack through System Settings > Appearance > Icons.
+```bash
+./install.sh all          # or main|moon|dawn
+lookandfeeltool -a com.rosepine.moon
+```
+
+Or GUI: System Settings > Appearance > Global Theme > Install from File... > pick `look-and-feel/com.rosepine.*`. Window buttons are on the left (macOS order) — set in Settings > Window Decorations > Titlebar Buttons if needed.
+
+## Manual parts (legacy layout still present)
+
+`Rose Pine*/colorschemes/` mirrors the generated `color-schemes/*.colors` for the old docs. Source of truth is `palette.json`; regenerate with `python3 tools/generate.py` and traffic lights with `python3 tools/generate-aurorae.py`. Validate everything with `./tools/build.sh`.
 
 ## Gallery
 

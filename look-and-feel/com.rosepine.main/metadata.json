@@ -1,0 +1,20 @@
+{
+  "KPackageStructure": "Plasma/LookAndFeel",
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "rose-pine",
+        "Name": "Ros\u00e9 Pine"
+      }
+    ],
+    "Category": "Plasma Look And Feel",
+    "Description": "Ros\u00e9 Pine global theme for Plasma 6 (Breeze behavior, Ros\u00e9 Pine colors)",
+    "EnabledByDefault": true,
+    "Id": "com.rosepine.main",
+    "License": "MIT",
+    "Name": "Ros\u00e9 Pine",
+    "Version": "1.0",
+    "Website": "https://github.com/rose-pine/kde"
+  },
+  "X-Plasma-APIVersion": "2"
+}
