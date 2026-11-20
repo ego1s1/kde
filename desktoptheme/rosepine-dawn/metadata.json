@@ -2,16 +2,16 @@
   "KPlugin": {
     "Authors": [
       {
-        "Email": "rose-pine",
-        "Name": "Ros\u00e9 Pine"
+        "Email": "priyanshusharma1803@outlook.com",
+        "Name": "Rosé Pine"
       }
     ],
     "Category": "",
-    "Description": "Ros\u00e9 Pine Dawn Plasma style (Breeze shapes, Ros\u00e9 Pine colors)",
+    "Description": "Rosé Pine Dawn Plasma style (Breeze shapes, Rosé Pine colors)",
     "EnabledByDefault": true,
     "Id": "rosepine-dawn",
     "License": "MIT",
-    "Name": "Ros\u00e9 Pine Dawn",
+    "Name": "Rosé Pine Dawn",
     "Version": "1.0",
     "Website": "https://github.com/rose-pine/kde"
   },

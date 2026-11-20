@@ -1,3 +1,4 @@
 reference/
 *.tar.gz
 .build/
+dist/

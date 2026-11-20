@@ -3,16 +3,16 @@
   "KPlugin": {
     "Authors": [
       {
-        "Email": "rose-pine",
-        "Name": "Ros\u00e9 Pine"
+        "Email": "priyanshusharma1803@outlook.com",
+        "Name": "Rosé Pine"
       }
     ],
     "Category": "Plasma Look And Feel",
-    "Description": "Ros\u00e9 Pine Moon global theme for Plasma 6 (BreezeEnhanced traffic lights, Rose Pine colors)",
+    "Description": "Rosé Pine Moon global theme for Plasma 6 (BreezeEnhanced traffic lights, Rose Pine colors)",
     "EnabledByDefault": true,
     "Id": "com.rosepine.moon",
     "License": "MIT",
-    "Name": "Ros\u00e9 Pine Moon",
+    "Name": "Rosé Pine Moon",
     "Version": "1.0",
     "Website": "https://github.com/rose-pine/kde"
   },

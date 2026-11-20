@@ -1,14 +1,21 @@
 {
-    "KPackageStructure": "KWin/Aurorae",
-    "KPlugin": {
-        "Authors": [{"Email": "", "Name": "Rosé Pine"}],
-        "Category": "Plasma 6 Window Decorations",
-        "ServiceTypes": ["aurorae"],
-        "EnabledByDefault": true,
-        "Name": "Rose Pine Moon",
-        "Description": "Rosé Pine traffic lights (love/gold/pine) for KWin Aurorae",
-        "Id": "RosePineMoon",
-        "License": "MIT",
-        "Version": "1.0"
-    }
+  "KPackageStructure": "KWin/Aurorae",
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "priyanshusharma1803@outlook.com",
+        "Name": "Rosé Pine"
+      }
+    ],
+    "Category": "Plasma 6 Window Decorations",
+    "ServiceTypes": [
+      "aurorae"
+    ],
+    "EnabledByDefault": true,
+    "Name": "Rose Pine Moon",
+    "Description": "Rosé Pine traffic lights (love/gold/pine) for KWin Aurorae",
+    "Id": "RosePineMoon",
+    "License": "MIT",
+    "Version": "1.0"
+  }
 }
