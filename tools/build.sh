@@ -32,13 +32,21 @@ sys.exit(0 if ok else 1)
 EOF
 python3 tools/generate.py --check || exit 1
 
-echo "=== 3. json validity ==="
+echo "=== 3. gtk themes present ==="
+for t in RosePine RosePineMoon RosePineDawn; do
+  for f in gtk-3.0/gtk.css gtk-4.0/gtk.css gtk-2.0/gtkrc settings.ini assets; do
+    [ -e "gtk/themes/$t/$f" ] || { echo "FAIL: missing gtk/themes/$t/$f"; exit 1; }
+  done
+done
+echo "OK: gtk themes present"
+
+echo "=== 4. json validity ==="
 for j in look-and-feel/*/metadata.json desktoptheme/*/metadata.json; do
   python3 -m json.tool "$j" >/dev/null || exit 1
 done
 echo "OK: metadata.json valid"
 
-echo "=== 4. contrast gates (WCAG AA body >= 4.5) ==="
+echo "=== 5. contrast gates (WCAG AA body >= 4.5) ==="
 python3 - <<'EOF'
 import configparser, glob
 def lum(rgb):

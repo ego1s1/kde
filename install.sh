@@ -28,9 +28,70 @@ install_variant() {
   rm -rf ~/.local/share/aurorae/themes/$aurorae
   cp -r "$REPO/aurorae/themes/$aurorae" ~/.local/share/aurorae/themes/
   echo "aurorae: $aurorae"
+  mkdir -p ~/.local/share/themes
+  rm -rf ~/.local/share/themes/$slug
+  cp -r "$REPO/gtk/themes/$slug" ~/.local/share/themes/
+  echo "gtk: $slug"
   kpackagetool6 -t Plasma/LookAndFeel -r "$lfid" >/dev/null 2>&1 || true
   kpackagetool6 -t Plasma/LookAndFeel -i "$REPO/look-and-feel/$lfid" 2>&1 | tail -n 2
   echo "look-and-feel: $lfid"
+}
+
+set_ini_key() {
+  local file="$1" key="$2" value="$3"
+  if command -v kwriteconfig6 >/dev/null 2>&1; then
+    kwriteconfig6 --file "$file" --group Settings --key "$key" "$value"
+  elif command -v python3 >/dev/null 2>&1; then
+    python3 - "$file" "$key" "$value" <<'PY'
+import configparser, sys
+path, key, value = sys.argv[1:4]
+cfg = configparser.ConfigParser()
+cfg.optionxform = str
+cfg.read(path)
+if not cfg.has_section("Settings"):
+    cfg.add_section("Settings")
+cfg.set("Settings", key, value)
+with open(path, "w") as f:
+    cfg.write(f, space_around_delimiters=False)
+PY
+  else
+    echo "warning: cannot update $file (need kwriteconfig6 or python3)"
+  fi
+}
+
+apply_gtk() {
+  local v="$1" slug dark
+  case "$v" in
+    main) slug=RosePine; dark=true ;;
+    moon) slug=RosePineMoon; dark=true ;;
+    dawn) slug=RosePineDawn; dark=false ;;
+  esac
+  if [ ! -d "$HOME/.local/share/themes/$slug" ]; then
+    echo "gtk: $slug not installed (skipping)"
+    return 0
+  fi
+  mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"
+  for ver in 3.0 4.0; do
+    local ini="$HOME/.config/gtk-$ver/settings.ini"
+    set_ini_key "$ini" gtk-theme-name "$slug"
+    set_ini_key "$ini" gtk-application-prefer-dark-theme "$dark"
+  done
+  # GTK2 has no prefer-dark support; point it at the variant directly.
+  if [ -f "$HOME/.gtkrc-2.0" ] && grep -q '^gtk-theme-name' "$HOME/.gtkrc-2.0"; then
+    sed -i "s|^gtk-theme-name.*|gtk-theme-name=\"$slug\"|" "$HOME/.gtkrc-2.0"
+  else
+    printf 'gtk-theme-name="%s"\n' "$slug" >> "$HOME/.gtkrc-2.0"
+  fi
+  # GTK4/Wayland reads the theme from GSettings, not settings.ini.
+  if command -v gsettings >/dev/null 2>&1; then
+    gsettings set org.gnome.desktop.interface gtk-theme "$slug" 2>/dev/null || true
+    if [ "$dark" = true ]; then
+      gsettings set org.gnome.desktop.interface color-scheme prefer-dark 2>/dev/null || true
+    else
+      gsettings set org.gnome.desktop.interface color-scheme default 2>/dev/null || true
+    fi
+  fi
+  echo "gtk applied: $slug"
 }
 
 apply_variant() {
@@ -41,6 +102,7 @@ apply_variant() {
     dawn) lfid=com.rosepine.dawn; aurorae=RosePineDawn ;;
   esac
   lookandfeeltool -a "$lfid"
+  apply_gtk "$v"
   # Preferred deco: BreezeEnhanced (C++, Rose Pine buttons).
   export QT_PLUGIN_PATH="$HOME/.local/lib/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}"
   if /usr/lib/kwin-applywindowdecoration BreezeEnhanced >/dev/null 2>&1; then

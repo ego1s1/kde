@@ -25,5 +25,9 @@ done
 for t in RosePine RosePineMoon RosePineDawn; do
   tar czf "$DIST/aurorae-$t.tar.gz" -C aurorae/themes "$t" || exit 1
 done
+# 5. GTK themes (<Theme> as top dir)
+for t in RosePine RosePineMoon RosePineDawn; do
+  tar czf "$DIST/gtk-$t.tar.gz" -C gtk/themes "$t" || exit 1
+done
 echo "=== dist/ ==="
 ls -l "$DIST"
