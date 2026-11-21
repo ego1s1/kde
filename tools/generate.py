@@ -198,22 +198,6 @@ def main():
                 out.parent.mkdir(parents=True, exist_ok=True)
                 out.write_text(text)
                 print(f"wrote {out.relative_to(REPO)}")
-    # legacy spaced dirs: refresh in place so old install docs keep working
-    legacy = {
-        "main": REPO / "Rose Pine" / "colorschemes" / "rose-pine.colors",
-        "moon": REPO / "Rose Pine Moon" / "colorschemes" / "rose-pine-moon.colors",
-        "dawn": REPO / "Rose Pine Dawn" / "colorschemes" / "rose-pine-dawn.colors",
-    }
-    for variant, path in legacy.items():
-        text = render_colorscheme(variant)
-        if check:
-            if not path.exists() or path.read_text() != text:
-                print(f"DRIFT: {path}")
-                failed = True
-        else:
-            path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(text)
-            print(f"wrote {path.relative_to(REPO)}")
     if check and failed:
         sys.exit(1)
     print("OK: no $vars, all schemes in sync")

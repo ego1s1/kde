@@ -16,8 +16,8 @@ for t in cmake g++ make; do
 done
 [ -d "$SRC" ] || { echo "MISSING: $SRC (vendored fork)"; exit 1; }
 # Guard: the vendored fork must already carry the Rose Pine recolor.
-# To refresh from upstream: copy reference/BreezeEnhanced over the fork
-# (keep .git out), then run: python3 tools/recolor-breezeenhanced.py <fork>
+# To refresh from upstream: copy the upstream BreezeEnhanced sources over the
+# fork (keep .git out), then run: python3 tools/recolor-breezeenhanced.py <fork>
 # and re-apply the KPlugin Id/Name fix below.
 if grep -rq "QColor(255, 92, 87)\|QColor(40, 211, 63)\|QColor(243, 176, 43)" "$SRC/breezebutton.cpp"; then
   echo "UPSTREAM COLORS PRESENT in $SRC/breezebutton.cpp -- re-run recolor-breezeenhanced.py on the fork first"

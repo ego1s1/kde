@@ -7,7 +7,7 @@ Replaces Breeze-arrow fallback buttons with macOS-style traffic lights:
   maximize = pine  (green)
 
 Usage: python3 tools/generate-aurorae.py [--install]
-Reads reference/whitesur-aurorae/{close,minimize,maximize,decoration}.svg,
+Reads tools/templates/whitesur-aurorae/{close,minimize,maximize,decoration}.svg,
 writes aurorae/themes/RosePine{,Moon,Dawn}/
 """
 import re
@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-REF = REPO / "reference" / "whitesur-aurorae"
+REF = REPO / "tools" / "templates" / "whitesur-aurorae"
 OUT_BASE = REPO / "aurorae" / "themes"
 
 PALETTES = {
@@ -71,7 +71,7 @@ METADATA = """[Desktop Entry]
 Name={display}
 Comment=Rosé Pine traffic lights (love/gold/pine) for KWin Aurorae
 X-KDE-PluginInfo-Author=Rosé Pine
-X-KDE-PluginInfo-Email=
+X-KDE-PluginInfo-Email=priyanshusharma1803@outlook.com
 X-KDE-PluginInfo-Name={slug}
 X-KDE-PluginInfo-Version=1.0
 X-KDE-PluginInfo-Category=
@@ -83,7 +83,7 @@ X-KDE-PluginInfo-EnabledByDefault=true
 METADATA_JSON = """{
     "KPackageStructure": "KWin/Aurorae",
     "KPlugin": {
-        "Authors": [{"Email": "", "Name": "Rosé Pine"}],
+        "Authors": [{"Email": "priyanshusharma1803@outlook.com", "Name": "Rosé Pine"}],
         "Category": "Plasma 6 Window Decorations",
         "ServiceTypes": ["aurorae"],
         "EnabledByDefault": true,

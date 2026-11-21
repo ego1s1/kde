@@ -10,7 +10,7 @@ python3 tools/generate.py || exit 1
 python3 tools/generate-aurorae.py || exit 1
 
 echo "=== 2. static checks ==="
-if grep -rn '\$[a-zA-Z_]' color-schemes/ desktoptheme/ "Rose Pine/" "Rose Pine Moon/" "Rose Pine Dawn/" 2>/dev/null; then
+if grep -rn '\$[a-zA-Z_]' color-schemes/ desktoptheme/ 2>/dev/null; then
   echo "FAIL: unexpanded \$vars"; exit 1
 fi
 echo "OK: no \$vars"
